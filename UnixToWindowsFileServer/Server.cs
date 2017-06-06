@@ -22,6 +22,7 @@ namespace UnixToWindowsFileServer
                 var serverEndPoint = new IPEndPoint(serverAddr, port);
                 tcpServer = new TcpListener(serverEndPoint);
                 tcpServer.Start();
+                Console.WriteLine("Listening on port " + port);
                 Listen();
             }
             catch (SocketException e)
@@ -31,14 +32,6 @@ namespace UnixToWindowsFileServer
             finally
             {
                 tcpServer.Stop();
-            }
-        }
-
-        public void ParseArgs(string[] args)
-        {
-            foreach (string arg in args)
-            {
-                //todo parse commandline arguments
             }
         }
 
@@ -52,7 +45,7 @@ namespace UnixToWindowsFileServer
                 Console.WriteLine("Connected");
 
                
-                string fileName = "file1" + FILE_EXTENSION;
+                string fileName = DateTime.Now.ToString("yyyy-dd-M--HH-mm-ss") + FILE_EXTENSION;
                 BinaryWriter writer = new BinaryWriter(File.Open(fileName, FileMode.OpenOrCreate));
 
                 NetworkStream stream = client.GetStream();

@@ -6,10 +6,29 @@ namespace UnixToWindowsFileServer
 {
     class UnixToWindowsFileServer
     {
+        static int _port;
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Server fileServer = new Server();
+            ParseArgs(args);
+
+            if(_port != 0)
+            {
+                Server fileServer = new Server(_port);
+            }
+            else
+            {
+                Server fileServer = new Server();
+            }
+        }
+
+
+        public static void ParseArgs(string[] args)
+        {
+            if (args.Length > 0)
+            {
+                _port = Int32.Parse(args[0]);
+            }
         }
 
     }
