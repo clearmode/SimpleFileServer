@@ -3,3 +3,5 @@ A simple blocking server that saves recieved files to a .dat file. For use only 
 
 
 Only for use on private networks, behind a firewall. Does no authentication on who the file is coming from.
+
+Takes an optional argument for the port, defaults to port 804.
