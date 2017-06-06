@@ -35,7 +35,7 @@ namespace UnixToWindowsFileServer
             }
         }
 
-        public string Listen() 
+        private void Listen() 
         {
             while (true)
             {
